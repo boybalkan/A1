@@ -45,7 +45,8 @@ p {
 }
 
 .white-section {
-  background-color: #fff;
+  background-color: #7e7e7e;
+  color: #4a1e87
 }
 
 /* Navigation Bar */
@@ -70,10 +71,7 @@ p {
   font-family: "Montserrat-Light"
 }
 
-/* Donwload */
-.download-button {
-  margin: 5% 3% 5% 0%;
-}
+
 
 /* Title Section */
 #title .container-fluid {
@@ -97,7 +95,20 @@ p {
   position: absolute;
   right: 25%;
 }
-
+/* Download */
+#download{
+  text-align: center;
+  position: relative;
+}
+.download-text{
+  font-size: 3rem;
+  padding: 3% 10% 0;
+}
+.download-button {
+  width: 30rem;
+  margin: 2% 10% 2% ;
+  display: inline;
+}
 /* Features */
 #features {
   width: 100%;
