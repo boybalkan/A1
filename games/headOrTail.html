@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>A1</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script type="text/javascript">
+
+
+      var kopf = 0;
+      var zahl = 0;
+
+      function toss(){
+        if(Math.random() > 0.5){
+          document.getElementById("coin").src = "img/head.jpg";
+          kopf++;
+          document.getElementById("headT").innerHTML = "Kopf: " + kopf;
+
+        }else{
+          document.getElementById("coin").src = "img/zahl.jpg";
+          zahl++;
+          document.getElementById("tailT").innerHTML = "Zahl: " + zahl;
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <input type="button" name="" value="Kopf oder Zahl?" onclick="toss()">
+    <p id="headT"></p>
+    <p id="tailT"></p>
+    <img src="" id="coin" alt="???">
+  </body>
+</html>

@@ -61,6 +61,12 @@ include("DatabaseConnection.php");
     // echo $diff->y, $diff->m, $diff->d;
     $bdateN = date('Y-m-d', strtotime($bdate));
     $db->add_user($username, $surname, $prename, $mail, $bdateN, $pwd);
+
+    $_SESSION['username'] = $username;
+    $_SESSION['success'] = "You are now logged in";
+    header('location: index.html');
+
+
     unset($_POST['register']);
 
   }
