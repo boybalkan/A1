@@ -1,3 +1,5 @@
+<?php include('server.php'); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="css/styles.css">
 
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -18,25 +20,141 @@
 </head>
 
 <body>
-erste welt
-  <div class="content">
-    <?php if(isset($_SESSION['success'])): ?>
-      <div class="error success">
-          <h3>
-            <?php
-              echo $_SESSION['success'];
-              unset($_SESSION['success']);
-             ?>
-          </h3>
-      </div>
-    <?php endif ?>
 
-    <?php if(isset($_SESSION['username'])): ?>
-      <p>WELCOME <strong> <?php echo $_SESSION['username'] ?></strong> </p>
-      <p><a href="#">Logout?</a> </p>
-    <?php endif ?>
-  </div>
-Hallo Welt!
+
+      <div class="content">
+        <?php
+          if(!isset($_SESSION['success'])): ?>
+          <div class="error success">
+              <h3>
+                <?php
+                  echo ($_SESSION['success']);
+                  unset($_SESSION['success']);
+                 ?>
+              </h3>
+          </div>
+        <?php endif ?>
+
+        <?php if(isset($_SESSION['username'])): ?>
+          <p style="background-color:red;">WELCOME <strong> <?php echo $_SESSION['username']; ?></strong> </p>
+          <p><a href="login.php">Logout?</a> </p>
+        <?php endif ?>
+      </div>
+
+  <section id="title" class="colored-section">
+    <div class="container-fluid">
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html"><img src="images/a1logo.png" alt="Logo"></a>
+        <h3 class="name">Glücksspiel A1</h3>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#games">Spiele</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Einloggen</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+      <section id="testimonials">
+
+        <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active container-fluid">
+              <img class="banner-img" src="images/doppeltBonus.png" alt="Doppelter Einzahlungsbonus">
+            </div>
+            <div class="carousel-item container-fluid">
+              <img class="banner-img" src="images/livewetten.png" alt="livewetten">
+            </div>
+
+
+          </div>
+          <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </section>
+  <!-- Title -->
+  <section id="download" class="white-section">
+
+    <h3 class="download-text ">Lad dir heute noch die App herunter, um jederzeit auf eine Wette vorbereitet zu sein.</h3>
+
+    <button class="btn btn-dark btn-lg download-button" type="button"><i class="fab fa-apple"></i> Download</button>
+    <button class="btn btn-outline-light btn-lg download-button" type="button"><i class="fab fa-google-play"></i> Download</button>
+  </section>
+
+
+
+
+
+
+
+
+  <!-- Pricing -->
+  <section id="games" class="colored-section">
+    <h2 class="section-heading">Beliebte Spiele für 2</h2>
+
+    <div class="card-deck mb3 text-center">
+      <div class="pricing-column col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Würfeln</h3>
+          </div>
+          <div class="card-body">
+            <a href="games/wuerfel.html">
+              <button class="btn btn-large btn-block btn-outline-dark" type="submit">
+                <i class="fas fa-dice game-icon"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-column col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Kopf oder Zahl</h3>
+          </div>
+          <div class="card-body">
+            <a href="games/headOrTail.html">
+              <button class="btn btn-large btn-block btn-dark" type="button">
+                <img src="images/guess-number.png" class="game-icon" alt="guess-number">
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+  <!-- Footer -->
+
+  <footer id="footer" class="white-section">
+    <div class="container-fluid">
+      <i class="fab fa-twitter social-media"></i>
+      <i class="fab fa-facebook-f social-media"></i>
+      <i class="fab fa-instagram social-media"></i>
+      <i class="fas fa-envelope social-media"></i>
+      <p>© Copyright 2020 Glücksspiel A1</p>
+    </div>
+  </footer>
+
 
 </body>
 

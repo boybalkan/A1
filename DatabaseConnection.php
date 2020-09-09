@@ -41,5 +41,29 @@ class DatabaseConnection{
 
                 $statement->execute();
           }
+
+
+          public function login_user($username, $password, $errors){
+            if(empty($username)){
+              array_push($errors, "Username is required.");
+            }
+            if(empty($password)){
+              array_push($errors, "Pwd is required.");
+            }
+
+              if(count($errors) == 0 ){
+                $password = md5($password);
+                $query = $this->connection->prepare("SELECT * FROM users WHERE username LIKE '$username' AND password LIKE '$password'");
+                $result = mysqli_query($db, $query);
+                if(mysqli_num_rows($result) == 1){
+                  $_SESSION['username'] = $username;
+                  $_SESSION['success'] = "You are now logged in";
+                  header('location: index.php');
+                }else{
+                  array_push($errors, "The username or password is incorrect.");
+                  header('location: login.php');
+                }
+              }
+          }
     }
 ?>

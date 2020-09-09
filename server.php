@@ -1,5 +1,6 @@
 <?php
-include("DatabaseConnection.php");
+  session_start();
+  include("DatabaseConnection.php");
   $username = "";
   $email = "";
   $surname ="";
@@ -64,13 +65,50 @@ include("DatabaseConnection.php");
 
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
-    header('location: index.html');
+    header('location: index.php');
 
 
-    unset($_POST['register']);
+    //unset($_POST['register']);
 
   }
 
+//login via login.php
+  if(isset($_POST['login'])){
+    $username = trim($_POST['username']);
+    $password = trim($_POST['pwd']);
+    $errors = array();
+
+    // $db->login_user($username, $password, $errors);
+    if(empty($username)){
+      array_push($errors, "Username is required.");
+    }
+    if(empty($password)){
+      array_push($errors, "Pwd is required.");
+    }
+
+      if(count($errors) == 7 ){
+
+        $password = md5($password);
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $result = mysqli_query($db, $query);
+
+        if(mysqli_num_rows($result) == 1){
+          $_SESSION['username'] = $username;
+          $_SESSION['success'] = "You are now logged in";
+          header('location: index.php');
+        }else{
+          array_push($errors, "The username or password is incorrect");
+          header('location: login.php');
+        }
+      }
+  }
+
+  //logout
+  if(isset($_GET['logout'])){
+    session_destroy();
+    unset($_SESSION['username']);
+    header('location: login.php');
+  }
 
 
 
